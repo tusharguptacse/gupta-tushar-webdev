@@ -14,3 +14,44 @@ body {
 .no-left-margin {
     margin-left: 0px;
 }
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #337AB7;
+}
+
+#ntext{
+    color: #ffffff;
+}
+
+#btext{
+    color: #000000;
+}
+
+li.borderless {
+    border-top: 0 none;
+    border-bottom: 0 none;
+    border-left: 0 none;
+    border-right: 0 none;
+}
+
+body {
+    overflow-x:hidden;
+}
+
+.vertical-line {
+    border-right: 1px solid #cccccc;
+
+}
+
+.no-line-hover:hover{
+    text-decoration: none;
+}
+
+.black-image{
+    color: #000000;
+}
+
+.full-stretch{
+    height: 80vh;
+}
