@@ -41,6 +41,7 @@ body {
 
 .vertical-line {
     border-right: 1px solid #cccccc;
+    height:100%;
 
 }
 
