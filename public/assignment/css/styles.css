@@ -97,6 +97,10 @@ body {
     text-align: justify;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .glyphicon-none:before {
     content: "\2122";
     color: transparent;
