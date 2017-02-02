@@ -92,3 +92,12 @@ body {
 .margin-corrector{
     margin-top: 5px;
 }
+
+.text-justify {
+    text-align: justify;
+}
+
+.glyphicon-none:before {
+    content: "\2122";
+    color: transparent;
+}
