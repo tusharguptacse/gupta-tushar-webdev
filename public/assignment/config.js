@@ -41,9 +41,9 @@
                 controllerAs: "model"
             })
             .when("/user/:uid/website/new", {
-                templateUrl: "views/website/templates/website-new.view.client.html"
-                // controller: "WebsiteListController",
-                // controllerAs: "model"
+                templateUrl: "views/website/templates/website-new.view.client.html",
+                controller: "WebsiteNewController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid", {
                 templateUrl: "views/website/templates/website-edit.view.client.html",
@@ -53,18 +53,18 @@
             //page routes
             .when("/user/:uid/website/:wid/page", {
                 templateUrl: "views/website/templates/page-list.view.client.html",
-                // controller: "WebsiteEditController",
-                // controllerAs: "model"
+                controller: "PageListController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/new", {
                 templateUrl: "views/website/templates/page-new.view.client.html",
-                // controller: "WebsiteEditController",
-                // controllerAs: "model"
+                controller: "PageNewController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid", {
                 templateUrl: "views/website/templates/page-edit.view.client.html",
-                // controller: "WebsiteEditController",
-                // controllerAs: "model"
+                controller: "PageEditController",
+                controllerAs: "model"
             })
             // Widget Routes
             .when("/user/:uid/website/:wid/page/:pid/widget", {

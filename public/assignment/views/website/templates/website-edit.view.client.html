@@ -38,55 +38,68 @@
 </nav>
 
 <div class="row container-fluid">
-    <div class="col-sm-4 hidden-xs vertical-line">
-        <ul class="list-group">
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Address Book App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Gizmodo
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Blogging App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Script Testing App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-        </ul>
+    <div class="col-sm-4 hidden-xs full-stretch vertical-line">
+        <div class="container-fluid">
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Name
+                            <a>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                            </a>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <a href="#/user/{{model.userId}}/website/new" class="pull-right">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li ng-repeat="website in model.websites" class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="../page/page-list.html">
+                                {{website.name}}
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
     </div>
 
 
     <div class="col-sm-8">
         <div class="container-fluid">
-            <div class="form-group">
-        <label>Website Name</label>
-        <input class="form-control" type="text" placeholder="Name" value="ToDo List"/>
-        <label>Website Description</label>
-        <textarea class="form-control" rows="3" placeholder="Description"></textarea>
+            <div ng-show= "model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
             </div>
 
-        <a class="btn btn-danger btn-block" href="website-list.view.client.html">
-            Delete
+            <div ng-show= "model.message" class="alert alert-success" role="alert">
+                {{model.message}}
+            </div>
+            <div class="form-group">
+        <label>Website Name</label>
+        <input class="form-control" ng-model="model.website.name" type="text" placeholder="Name"/>
+        <label>Website Description</label>
+        <textarea class="form-control" rows="3" ng-model="model.website.description" placeholder="Description"></textarea>
+            </div>
+
+        <a class="btn btn-danger btn-block" ng-click="model.deleteSite()" >
+            Delete Website
+        </a>
+
+        <a class="btn btn-success btn-block" ng-click="model.update(model.website)">
+            Update Website
         </a>
 
         </div>

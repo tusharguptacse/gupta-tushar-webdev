@@ -14,16 +14,19 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
+                <!--suppress XmlDuplicatedId -->
                 <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-header">
+                <!--suppress XmlDuplicatedId -->
                 <a class="navbar-brand" id="ntext">
                     Websites
                 </a>
             </div>
             <div class="navbar-text pull-right">
+                <!--suppress XmlDuplicatedId -->
                 <a id="ntext" href="website-new.view.client.html">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
@@ -31,16 +34,19 @@
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs-block">
+                <!--suppress XmlDuplicatedId -->
                 <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
+                <!--suppress XmlDuplicatedId -->
                 <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
             <div class="navbar-header container-fluid">
+                <!--suppress XmlDuplicatedId -->
                 <a class="navbar-brand " id="ntext">
                     New Website
                 </a>
@@ -51,57 +57,62 @@
 
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs full-stretch vertical-line">
-        <ul class="list-group">
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Address Book App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Blogger
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Gizmodo
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html.html" class="no-line-hover">
-                    Blogging App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="page-list.html" class="no-line-hover">
-                    Script Testing App
-                </a>
-                <a href="website-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-        </ul>
+        <div class="container-fluid">
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Name
+                            <a>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                            </a>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <a href="#/user/{{model.userId}}/website/new" class="pull-right">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li ng-repeat="website in model.websites" class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="../page/page-list.html">
+                                {{website.name}}
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
     </div>
 
 
     <div class="col-sm-8">
         <div class="container-fluid">
-        <label>Name</label>
-        <input class="form-control" type="text" placeholder="Name"/>
-        <label>Description</label>
-        <textarea class="form-control" rows="3" placeholder="Description"></textarea>
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" ng-model="website.name" type="text" placeholder="Name"/>
+                <label>Description</label>
+                <textarea class="form-control" rows="3" ng-model="website.des" placeholder="Description"></textarea>
+            </div>
+                <a class="btn btn-primary btn-block" ng-click="model.create(website)">
+                    Create Website
+                </a>
+                <a class="btn btn-danger btn-block" href="/login">
+                    Cancel
+                </a>
         </div>
     </div>
 

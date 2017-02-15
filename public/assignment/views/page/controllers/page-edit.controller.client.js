@@ -1,9 +1,9 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("WebsiteEditController", WebsiteEditController);
+        .controller("PageEditController", PageEditController);
 
-    function WebsiteEditController($routeParams, WebsiteService) {
+    function PageEditController($routeParams, PageService) {
         var vm = this;
         vm.update = update;
         vm.deleteSite = deleteSite;

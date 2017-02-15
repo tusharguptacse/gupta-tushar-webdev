@@ -12,10 +12,32 @@
             { "_id": "678", "name": "Checkers", update: new Date(),    "developerId": "123", "description": "Lorem" },
             { "_id": "789", "name": "Chess", update: new Date(),       "developerId": "234", "description": "Lorem" }
         ];
-        // TODO: complete website crud functions
-        // this.createWebsite = createWebsite;
-        this.findAllWebsites = findAllWebsites;
-        this.findWebsiteById = findWebsiteById;
+
+
+        var api = {
+            "createWebsite"         : createWebsite,
+            "findWebsitesByUser"    : findWebsitesByUser,
+            "findWebsiteById"       : findWebsiteById,
+            "updateWebsite"         : updateWebsite,
+            "deleteWebsite"         : deleteWebsite
+        };
+        return api;
+
+
+        function createWebsite(userId, website) {
+            var newWebsite = {};
+
+            newWebsite = {
+                _id         : + new Date(),
+                name        : website.name,
+                developerId : userId,
+                description : website.des
+            };
+
+            websites.push(newWebsite);
+            return newWebsite;
+        }
+
 
         function findWebsiteById(websiteId) {
             for(var w in websites) {
@@ -26,7 +48,7 @@
             return null;
         }
 
-        function findAllWebsites(userId) {
+        function findWebsitesByUser(userId) {
             var sites = [];
             for(var w in websites) {
                 if(userId === websites[w].developerId) {
@@ -34,6 +56,26 @@
                 }
             }
             return sites;
+        }
+
+        function updateWebsite(websiteId, website) {
+            for(var w in websites) {
+                if( websites[w]._id == websiteId ) {
+                    websites[w].name = website.name;
+                    websites[w].description = website.description;
+                    return websites[w];
+                }
+            }
+            return null;
+        }
+
+        function deleteWebsite(websiteId) {
+            for(var w in websites) {
+                if( websites[w]._id == websiteId ) {
+                    return websites.splice(w, 1);
+                }
+            }
+            return null;
         }
     }
 })();

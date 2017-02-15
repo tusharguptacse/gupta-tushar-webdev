@@ -56,7 +56,7 @@
         function findUserById(userId) {
             for(var u in users) {
                 if( users[u]._id == userId ) {
-                    return users[u];
+                    return angular.copy(users[u]);
                 }
             }
             return null;
@@ -65,7 +65,7 @@
         function findUserByUsername(userName) {
             for(var u in users) {
                 if( users[u].username == userName ) {
-                    return users[u];
+                    return angular.copy(users[u]);
                 }
             }
             return null;
@@ -74,7 +74,7 @@
             for(var u in users) {
                 if( users[u].username == username &&
                     users[u].password == password ) {
-                    return users[u];
+                    return angular.copy(users[u]);
                 }
             }
             return null;
