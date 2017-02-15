@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>-->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
@@ -6,43 +6,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
-    <title>Website List</title>
+    <title>New Website</title>
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a id="btext" href="page-list.html">
+                <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand">
-                    Pages
+                <a class="navbar-brand" id="ntext">
+                    Websites
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a id="btext" href="page-new.html">
+                <a id="ntext" href="website-new.view.client.html">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs-block">
-                <a id="btext" href="page-list.html">
+                <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a  id="btext" href="page-list.html">
+                <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
-            <div class="navbar-header">
-                <a class="navbar-brand ">
-                    New Page
+            <div class="navbar-header container-fluid">
+                <a class="navbar-brand " id="ntext">
+                    New Website
                 </a>
             </div>
         </div>
@@ -50,45 +50,45 @@
 </nav>
 
 <div class="row container-fluid">
-    <div class="col-sm-4 hidden-xs vertical-line">
+    <div class="col-sm-4 hidden-xs full-stretch vertical-line">
         <ul class="list-group">
             <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Blog Post
+                <a href="page-list.html" class="no-line-hover">
+                    Address Book App
                 </a>
-                <a href="page-edit.html">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Blogs
-                </a>
-                <a href="page-edit.html">
+                <a href="website-edit.view.client.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
             <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Home
+                <a href="page-list.html" class="no-line-hover">
+                    Blogger
                 </a>
-                <a href="page-edit.html">
+                <a href="website-edit.view.client.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
             <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.htmll" class="no-line-hover">
-                    About
+                <a href="page-list.html" class="no-line-hover">
+                    Gizmodo
                 </a>
-                <a href="page-edit.html">
+                <a href="website-edit.view.client.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
             <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Contact Us
+                <a href="page-list.html.html" class="no-line-hover">
+                    Blogging App
                 </a>
-                <a href="page-edit.html">
+                <a href="website-edit.view.client.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item borderless justify-content-between">
+                <a href="page-list.html" class="no-line-hover">
+                    Script Testing App
+                </a>
+                <a href="website-edit.view.client.html">
                     <span class="glyphicon glyphicon-cog pull-right"></span>
                 </a>
             </li>
@@ -99,19 +99,19 @@
     <div class="col-sm-8">
         <div class="container-fluid">
         <label>Name</label>
-        <input class="form-control" type="text" placeholder="Page Name"/>
-        <label>Title</label>
-        <input class="form-control" type="text" placeholder="Page Title"></input>
+        <input class="form-control" type="text" placeholder="Name"/>
+        <label>Description</label>
+        <textarea class="form-control" rows="3" placeholder="Description"></textarea>
         </div>
     </div>
 
 </div>
 
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-custom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="profile.html">
+            <a id="ntext" href="profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

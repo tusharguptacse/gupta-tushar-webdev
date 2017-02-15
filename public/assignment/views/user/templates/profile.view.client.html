@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta name="HandheldFriendly" content="true">
-    <title>Profile</title>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="profile.html" id="ntext">
+            <a href="profile.view.client.html" id="ntext">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
@@ -27,25 +15,38 @@
 
 
 <div class="container">
+    <div ng-show= "model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <div ng-show= "model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+
     <form>
 
     <label>Username</label>
-    <input class="form-control" type="text" placeholder="Username"/>
+    <input class="form-control" type="text" ng-model="model.user.username" placeholder="Username"/>
 
     <label for="email">Email</label>
-    <input id="email" class="form-control" type="email" placeholder="Email" />
+    <input id="email" class="form-control" type="email" ng-model="model.user.email" placeholder="Email" />
 
     <label for="first">First Name</label>
-    <input id="first" class="form-control" type="text" placeholder="First Name"/>
+    <input id="first" class="form-control" type="text" ng-model="model.user.firstName" placeholder="First Name"/>
 
     <label for="last">Last Name</label>
-    <input id="last" class="form-control" type="text" placeholder="Last Name"/>
+    <input id="last" class="form-control" type="text" ng-model="model.user.lastName" placeholder="Last Name"/>
 
     <a class="btn btn-primary btn-block" href="website-list.html">
         Websites
     </a>
-
-    <a class="btn btn-danger btn-block" href="login.html">
+    <a class="btn btn-success btn-block" ng-click="model.updateUser(model.user)">
+        Update Profile
+    </a>
+    <a class="btn btn-warning btn-block" ng-click="model.deleteUser()">
+        Deregister
+    </a>
+    <a class="btn btn-danger btn-block" href="#/login">
         Logout
     </a>
     </form>
@@ -60,7 +61,3 @@
         </div>
     </div>
 </nav>
-
-
-</body>
-</html>
