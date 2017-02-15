@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta name="HandheldFriendly" content="true">
-    <title>New Website</title>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
                 <!--suppress XmlDuplicatedId -->
-                <a id="ntext" href="website-list.view.client.html">
+                <a id="ntext" href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -27,7 +15,7 @@
             </div>
             <div class="navbar-text pull-right">
                 <!--suppress XmlDuplicatedId -->
-                <a id="ntext" href="website-new.view.client.html">
+                <a id="ntext" href="#/user/{{model.userId}}/website/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -78,8 +66,8 @@
                 </li>
                 <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
-                        <div class="col-xs-6">
-                            <a href="../page/page-list.html">
+                        <div class="col-xs-6 no-line-hover">
+                            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">
                                 {{website.name}}
                             </a>
                         </div>
@@ -128,6 +116,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>

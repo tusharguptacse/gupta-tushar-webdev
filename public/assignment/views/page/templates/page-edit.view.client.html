@@ -1,35 +1,35 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a id="btext" href="page-list.view.client.html">
+                <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand">
+                <a class="navbar-brand" id="ntext">
                     Pages
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a id="btext" href="page-new.view.client.html">
+                <a id="ntext" href="website-new.view.client.html">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs-block">
-                <a id="btext" href="page-list.view.client.html">
+                <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a  id="btext" href="page-list.view.client.html">
+                <a id="ntext" href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand ">
+                <a class="navbar-brand " id="ntext">
                     Edit Page
                 </a>
             </div>
@@ -39,72 +39,77 @@
 
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs vertical-line">
-        <ul class="list-group">
-            <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Blog Post
-                </a>
-                <a href="page-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Blogs
-                </a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Home
-                </a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.htmll" class="no-line-hover">
-                    About
-                </a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-            <li class="list-group-item borderless justify-content-between">
-                <a href="widget-list.html" class="no-line-hover">
-                    Contact Us
-                </a>
-                <a href="page-edit.view.client.html">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-        </ul>
+        <div class="container-fluid">
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Name
+                            <a>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                            </a>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li ng-repeat="page in model.pages" class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="../page/page-list.html">
+                                  {{page.name}}
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
     </div>
 
 
     <div class="col-sm-8">
         <div class="container-fluid">
+            <div ng-show= "model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
+            </div>
+
+            <div ng-show= "model.message" class="alert alert-success" role="alert">
+                {{model.message}}
+            </div>
             <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text" placeholder="Page Name" value="Blog Post"/>
-        <label>Title</label>
-        <input class="form-control" type="text" placeholder="Page Title"/>
+        <input class="form-control" type="text" ng-model="model.page.name" placeholder="Page Name"/>
+        <label>Description</label>
+        <input class="form-control" type="text" ng-model="model.page.description" placeholder="Description"/>
             </div>
-        <a class="btn btn-danger btn-block" href="page-list.view.client.html">
-            Delete
-        </a>
+            <a class="btn btn-danger btn-block" ng-click="model.deletePage()" >
+                Delete Page
+            </a>
+
+            <a class="btn btn-success btn-block" ng-click="model.update(model.page)">
+                Update Page
+            </a>
         </div>
     </div>
 
 </div>
 
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-custom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="profile.html">
+            <a id="ntext" href="profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

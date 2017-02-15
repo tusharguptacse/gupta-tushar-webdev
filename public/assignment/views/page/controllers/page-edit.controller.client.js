@@ -6,33 +6,40 @@
     function PageEditController($routeParams, PageService) {
         var vm = this;
         vm.update = update;
-        vm.deleteSite = deleteSite;
+        vm.deletePage = deletePage;
         function init() {
             vm.userId = $routeParams['uid'];
             var userId = vm.userId;
             vm.websiteId = $routeParams['wid'];
-            var website = WebsiteService.findWebsiteById(vm.websiteId);
-            vm.website = website;
-            var websites = WebsiteService.findWebsitesByUser(userId);
-            vm.websites = websites;
+            var pages = PageService.findPageByWebsiteId(vm.websiteId);
+            vm.pageId = $routeParams['pid'];
+
+            var pageId = vm.pageId;
+            console.log(pageId);
+
+            vm.pages = pages;
+            var page = PageService.findPageById(vm.pageId);
+
+            vm.page = page;
+            console.log(page);
         }
         init();
 
-        function update(website) {
-            var website = WebsiteService.updateWebsite(vm.websiteId, website);
-            if(website != null) {
-                vm.message = "Website Successfully Updated!"
+        function update(page) {
+            var page = PageService.updatePage(vm.pageId, page);
+            if(page != null) {
+                vm.message = "Page Successfully Updated!"
             } else {
-                vm.error = "Unable to update website!";
+                vm.error = "Unable to update page!";
             }
         }
 
-        function deleteSite() {
-            var webs = WebsiteService.deleteWebsite(vm.websiteId);
-            if(webs != null) {
-                vm.message = "Website Successfully Deleted!"
+        function deletePage() {
+            var p = PageService.deletePage(vm.pageId);
+            if(p != null) {
+                vm.message = "Page Successfully Deleted!"
             } else {
-                vm.error = "Unable to delete website!";
+                vm.error = "Unable to delete page!";
             }
         }
     }
