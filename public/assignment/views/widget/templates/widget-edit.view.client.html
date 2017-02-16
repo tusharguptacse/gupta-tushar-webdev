@@ -1,21 +1,19 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11">
-                <p class="navbar-text pull-left">
-                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                </p>
-                <span class="navbar-brand pull-left">Widget Edit</span>
-            </div>
-            <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
-                <p class="navbar-text pull-right borderMarginR">
-                    <a href ng-click="model.updateWidget()">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                </p>
-            </div>
+        <div class="navbar-text pull-left">
+            <a id="ntext" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a id="ntext" ng-click="model.updateWidget()" >
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a  class="navbar-brand" id="ntext">
+                Widget Edit
+            </a>
         </div>
     </div>
 </nav>
