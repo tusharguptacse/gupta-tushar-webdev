@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("WebsiteEditController", WebsiteEditController);
@@ -16,11 +16,12 @@
             var websites = WebsiteService.findWebsitesByUser(userId);
             vm.websites = websites;
         }
+
         init();
 
         function update(website) {
             var website = WebsiteService.updateWebsite(vm.websiteId, website);
-            if(website != null) {
+            if (website != null) {
                 vm.message = "Website Successfully Updated!"
             } else {
                 vm.error = "Unable to update website!";
@@ -29,7 +30,7 @@
 
         function deleteSite() {
             var webs = WebsiteService.deleteWebsite(vm.websiteId);
-            if(webs != null) {
+            if (webs != null) {
                 vm.message = "Website Successfully Deleted!"
             } else {
                 vm.error = "Unable to delete website!";
