@@ -38,18 +38,12 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-custom">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11">
-            </div>
-            <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
-                <p class="navbar-text pull-right borderMarginR">
-                    <a href="#/user/{{model.userId}}">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
-                </p>
-            </div>
+        <div class="navbar-text pull-right">
+            <a id="ntext" href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
         </div>
     </div>
 </nav>

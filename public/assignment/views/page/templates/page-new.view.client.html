@@ -24,7 +24,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a id="ntext" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <a id="ntext" href ng-click="model.create(page)">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -87,9 +87,6 @@
             </div>
             <a class="btn btn-primary btn-block" ng-click="model.create(page)">
                 Create Page
-            </a>
-            <a class="btn btn-danger btn-block" href="/login">
-                Cancel
             </a>
         </div>
     </div>
