@@ -113,7 +113,6 @@
 
         function deleteWidget() {
             var deleteSuccessful = WidgetService.deleteWidget(vm.currentWidgetId);
-            console.log(deleteSuccessful);
             if (deleteSuccessful) {
                 // Redirect to widget list page
                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");

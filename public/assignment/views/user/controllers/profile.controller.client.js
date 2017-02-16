@@ -13,7 +13,6 @@
         function init() {
             vm.userId = $routeParams['uid'];
             var user = UserService.findUserById(vm.userId);
-            console.log(user);
             vm.user = user;
             userId = vm.userId
 

@@ -24,7 +24,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a id="ntext" href="#/user/{{model.userId}}/website">
+                <a id="ntext" href ng-click="model.update(model.website)">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -61,7 +61,7 @@
                 <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                            <a href="#/user/{{website.developerId}}/website/{{website._id}}/page" class="no-line-hover">
                                 {{website.name}}
                             </a>
                         </div>

@@ -18,7 +18,7 @@
 
         function create(page) {
                 var newPage = PageService.createPage(vm.websiteId, page);
-                console.log(newPage);
+
                 if(newPage) {
                     $location.url("/user/"+vm.userId+"/website/"+websiteId+"/page/");
 

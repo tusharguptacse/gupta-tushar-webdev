@@ -29,7 +29,7 @@
             </div>
             <div class="navbar-text pull-right">
                 <!--suppress XmlDuplicatedId -->
-                <a id="ntext" href="#/user/{{model.userId}}/website">
+                <a id="ntext" href ng-click="model.create(website)">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
@@ -67,7 +67,7 @@
                 <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
                         <div class="col-xs-6 no-line-hover">
-                            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">
+                            <a href="#/user/{{model.userId}}/website/{{website._id}}/page" class="no-line-hover">
                                 {{website.name}}
                             </a>
                         </div>
