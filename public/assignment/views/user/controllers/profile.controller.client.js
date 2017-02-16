@@ -15,6 +15,7 @@
             var user = UserService.findUserById(vm.userId);
             console.log(user);
             vm.user = user;
+            userId = vm.userId
 
         }
         init();
@@ -33,7 +34,7 @@
             if(user != null) {
                 vm.message = "User Successfully Deleted!"
             } else {
-                vm.error = "Unable to delete user   ";
+                vm.error = "Unable to delete user!";
             }
         }
     }

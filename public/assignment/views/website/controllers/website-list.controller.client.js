@@ -12,7 +12,6 @@
         init();
 
         var userId = vm.userId;
-        // var websites = WebsiteService.findWebsiteById(userId);
         var websites = WebsiteService.findWebsitesByUser(userId);
         vm.websites = websites;
         console.log(vm.websites);

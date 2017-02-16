@@ -24,6 +24,10 @@ body {
     color: #ffffff;
 }
 
+.ntext{
+    color: #ffffff;
+}
+
 #btext{
     color: #000000;
 }
@@ -104,4 +108,36 @@ body {
 .glyphicon-none:before {
     content: "\2122";
     color: transparent;
+}
+
+.up {
+    position: absolute;
+    padding-right: 0px;
+    height: 25px;
+}
+
+.sideBorder {
+    height: 99%;
+    border-right: 1px solid #cccccc;
+}
+
+.widget-Pos {
+    position: relative;
+}
+
+.widget-style {
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    opacity: .8;
+}
+.marginTop {
+    margin-top: 20px;
+}
+
+.marginBottom {
+    margin-bottom: 20px;
+}
+
+.borderMargin {
+    margin: 15px;
 }
