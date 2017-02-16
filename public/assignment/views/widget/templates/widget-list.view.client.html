@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a id="ntext" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a id="ntext" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a  class="navbar-brand" id="ntext">
+                Widgets
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid marginTop marginBottom">
+    <div class="container-fluid">
+        <div ng-repeat="widget in model.widgets" class="row marginTop widget-Pos">
+
+            <div ng-switch="widget.widgetType">
+                <div ng-switch-when="HEADER" class="col-xs-12">
+                    <ng-include src="'views/widget/templates/widget-header.view.client.html'"></ng-include>
+                </div>
+
+                <div ng-switch-when="HTML" class="col-xs-12">
+                    <ng-include src="'views/widget/templates/widget-html.view.client.html'"></ng-include>
+                </div>
+
+                <div ng-switch-when="IMAGE" class="img-rounded col-xs-12">
+                    <ng-include src="'views/widget/templates/widget-image.view.client.html'"></ng-include>
+                </div>
+
+                <div ng-switch-when="YOUTUBE" class="img-rounded col-xs-12">
+                    <ng-include src="'views/widget/templates/widget-youtube.view.client.html'"></ng-include>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" col-xs-2 col-mid-1 col-xs-offset-10 col-mid-offset-11 up">
+                    <div class="pull-right widget-style">
+                        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"
+                           class="navbar-link">
+                            <span class="glyphicon glyphicon-cog"/>
+                        </a>
+                        <span class="glyphicon glyphicon-align-justify"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="profile.html">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-left">
+                <span class="glyphicon glyphicon-play"></span>
+                <span class="glyphicon glyphicon-none"></span>
+                <span class="glyphicon glyphicon-eye-open"></span>
+        </div>
+    </div>
+</nav>
