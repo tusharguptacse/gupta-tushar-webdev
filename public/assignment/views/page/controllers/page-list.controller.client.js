@@ -9,13 +9,12 @@
         function init() {
             vm.websiteId = $routeParams['wid'];
             vm.userId = $routeParams['uid'];
+            PageService.findPageByWebsiteId(vm.websiteId)
+                .success(function (page) {
+                    vm.pages = page;
+                });
         }
         init();
-
-        var websiteId = vm.websiteId;
-        var pages = PageService.findPageByWebsiteId(websiteId);
-        vm.pages = pages;
-
 
     }
 })();

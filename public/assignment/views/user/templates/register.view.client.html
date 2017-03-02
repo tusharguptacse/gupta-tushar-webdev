@@ -5,6 +5,10 @@
         {{model.error}}
     </div>
 
+    <div ng-show= "model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+
     <label>Username</label>
     <input class="form-control" ng-model="user.username" type="text" placeholder="Username"/>
     <label>Email</label>

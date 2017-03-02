@@ -17,8 +17,15 @@
             vm.pageId = $routeParams['pid'];
             vm.currentWidgetId = $routeParams['wgid'];
             vm.loc = $location;
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
-            vm.currentWidget = WidgetService.findWidgetById(vm.currentWidgetId);
+
+            WidgetService.findWidgetsByPageId(vm.pageId)
+                .success(function (widgetsFound) {
+                    vm.widgets = widgetsFound;
+                    console.log(widgetsFound);
+                })
+                .error(function (err) {
+                    vm.error = "Error while fetching widgets!! Please try after sometime";
+                });
 
         }
 
@@ -49,38 +56,57 @@
             vm.userId = $routeParams['uid'];
             vm.websiteId = $routeParams['wid'];
             vm.pageId = $routeParams['pid'];
-            vm.newWidgetHeader = {_id: "", widgetType: "HEADER", pageId: vm.pageId, size: 2, text: "New Header Text"};
+
+            vm.newWidgetHeader = {
+                _id: "",
+                widgetType: "HEADER",
+                pageId: vm.pageId,
+                size: 2,
+                text: "New Header Text",
+                name: "",
+                index: -1
+            };
             vm.newWidgetImage = {
                 _id: "",
                 widgetType: "IMAGE",
                 pageId: vm.pageId,
                 width: "100%",
-                url: "http://lorempixel.com/400/200/"
+                url: "http://lorempixel.com/400/200/",
+                name: "",
+                index: -1
             };
             vm.newWidgetYouTube = {
                 _id: "",
                 widgetType: "YOUTUBE",
                 pageId: vm.pageId,
                 width: "100%",
-                url: "https://youtu.be/AM2Ivdi9c4E"
+                url: "https://youtu.be/AM2Ivdi9c4E",
+                name: "",
+                index: -1
             };
-            vm.newWidgetHTML = {_id: "", widgetType: "HTML", pageId: vm.pageId, text: "<p>Lorem ipsum</p>"};
+            vm.newWidgetHTML = {
+                _id: "",
+                widgetType: "HTML",
+                pageId: vm.pageId,
+                text: "<p>Lorem ipsum</p>",
+                name: "",
+                index: -1
+            };
         }
 
         init();
 
         function createNewWidget(newWidget) {
 
-            var widgetCreated = WidgetService.createWidget(vm.pageId, newWidget);
-
-            if (widgetCreated._id != 0) {
-                // Redirecting to widget edit page
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widgetCreated._id);
-            }
-            else {
-                vm.error = "Failed to create new widget";
-            }
-
+            WidgetService.createWidget(vm.pageId, newWidget)
+                .success(function (widgetCreated) {
+                    if (widgetCreated != null) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widgetCreated._id);
+                    }
+                    else {
+                        vm.error = "Failed to create new widget";
+                    }
+                });
         }
     }
 
@@ -94,32 +120,55 @@
             vm.websiteId = $routeParams['wid'];
             vm.pageId = $routeParams['pid'];
             vm.currentWidgetId = $routeParams['wgid'];
-            vm.getOptions = WidgetService.getOptions();
-            vm.currentWidget = WidgetService.findWidgetById(vm.currentWidgetId);
+
+            WidgetService.getOptions()
+                .success(function (response) {
+                    if (response != null) {
+                        vm.options = response;
+                    }
+                    else {
+                        vm.error = "Failed to get options";
+                    }
+                });
+            //vm.getOptions = WidgetService.getOptions();
+            WidgetService.findWidgetById(vm.currentWidgetId)
+                .success(function (response) {
+                    if (response != null) {
+                        vm.currentWidget = response;
+                    }
+                    else {
+                        vm.error = "Failed to get current Widget";
+                    }
+                });
         }
 
         init();
 
         function updateWidget() {
-            var updateSuccessful = WidgetService.updateWidget(vm.currentWidgetId, vm.currentWidget);
-            if (updateSuccessful) {
-                // Redirect to widget list page
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-            }
-            else {
-                vm.error = "Failed to update widget";
-            }
+            console.log(vm.currentWidget);
+            WidgetService.updateWidget(vm.currentWidgetId, vm.currentWidget)
+                .success(function (response) {
+                    console.log(response);
+                    if (response != null) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                    }
+                    else {
+                        vm.error = "Failed to update widget";
+                    }
+                });
+
         }
 
         function deleteWidget() {
-            var deleteSuccessful = WidgetService.deleteWidget(vm.currentWidgetId);
-            if (deleteSuccessful) {
-                // Redirect to widget list page
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-            }
-            else {
-                vm.error = "Failed to delete widget";
-            }
+            console.log(vm.currentWidgetId);
+
+            WidgetService.deleteWidget($routeParams['wgid'])
+                .success(function (res) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                })
+                .error(function (err) {
+                    vm.error = "Failed to delete widget";
+                });
         }
 
     }

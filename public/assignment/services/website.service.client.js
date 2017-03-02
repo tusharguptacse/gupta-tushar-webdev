@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .service("WebsiteService", WebsiteService);
 
-    function WebsiteService() {
+    function WebsiteService($http) {
         var websites = [
             {"_id": "123", "name": "Facebook", update: new Date(), "developerId": "456", "description": "Lorem"},
             {"_id": "234", "name": "Tweeter", update: new Date(), "developerId": "456", "description": "Lorem"},
@@ -25,7 +25,7 @@
 
 
         function createWebsite(userId, website) {
-            var newWebsite = {};
+            var url = "/api/user/"+userId+"/website";
 
             newWebsite = {
                 _id         : +new Date(),
@@ -34,48 +34,51 @@
                 description : website.des
             };
 
-            websites.push(newWebsite);
-            return newWebsite;
+            return $http.post(url, newWebsite);
         }
 
 
         function findWebsiteById(websiteId) {
-            for (var w in websites) {
-                if (websiteId === websites[w]._id) {
-                    return angular.copy(websites[w]);
-                }
-            }
-            return null;
+            return $http.get("/api/website/"+websiteId);
+            // for (var w in websites) {
+            //     if (websiteId === websites[w]._id) {
+            //         return angular.copy(websites[w]);
+            //     }
+            // }
+            // return null;
         }
 
         function findWebsitesByUser(userId) {
-            var sites = [];
-            for (var w in websites) {
-                if (userId === websites[w].developerId) {
-                    sites.push(websites[w]);
-                }
-            }
-            return sites;
+            return $http.get("/api/user/"+userId+"/website");
+            // var sites = [];
+            // for (var w in websites) {
+            //     if (userId === websites[w].developerId) {
+            //         sites.push(websites[w]);
+            //     }
+            // }
+            // return sites;
         }
 
         function updateWebsite(websiteId, website) {
-            for (var w in websites) {
-                if (websites[w]._id == websiteId) {
-                    websites[w].name = website.name;
-                    websites[w].description = website.description;
-                    return angular.copy(websites[w]);
-                }
-            }
-            return null;
+            return $http.put("/api/website/"+websiteId, website);
+            // for (var w in websites) {
+            //     if (websites[w]._id == websiteId) {
+            //         websites[w].name = website.name;
+            //         websites[w].description = website.description;
+            //         return angular.copy(websites[w]);
+            //     }
+            // }
+            // return null;
         }
 
         function deleteWebsite(websiteId) {
-            for (var w in websites) {
-                if (websites[w]._id == websiteId) {
-                    return websites.splice(w, 1);
-                }
-            }
-            return null;
+            return $http.delete("/api/website/"+websiteId);
+            // for (var w in websites) {
+            //     if (websites[w]._id == websiteId) {
+            //         return websites.splice(w, 1);
+            //     }
+            // }
+            // return null;
         }
     }
 })();

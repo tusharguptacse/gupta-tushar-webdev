@@ -9,34 +9,44 @@
         vm.deleteSite = deleteSite;
         function init() {
             vm.userId = $routeParams['uid'];
-            var userId = vm.userId;
             vm.websiteId = $routeParams['wid'];
-            var website = WebsiteService.findWebsiteById(vm.websiteId);
-            vm.website = website;
-            var websites = WebsiteService.findWebsitesByUser(userId);
-            vm.websites = websites;
+            WebsiteService.findWebsiteById(vm.websiteId)
+                .success(function (foundWebsite) {
+                    vm.website = foundWebsite;
+                })
+                .error(function (err) {
+                    vm.error = "Cannot find website!"
+                });
+
+            WebsiteService.findWebsitesByUser(vm.userId)
+                .success(function (arrayWebsites) {
+                    vm.websites = arrayWebsites;
+                })
+                .error(function (err) {
+                    vm.error = "Cannot find this user's websites!"
+                });
         }
 
         init();
 
         function update(website) {
-            var website = WebsiteService.updateWebsite(vm.websiteId, website);
-            if (website != null) {
-                // vm.message = "Website Successfully Updated!"
-                $location.url("/user/" + vm.userId + "/website/");
-            } else {
-                vm.error = "Unable to update website!";
-            }
+            WebsiteService.updateWebsite(vm.websiteId, website)
+                .success(function (res) {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function (err) {
+                    vm.error = "failed to update";
+                });
         }
 
         function deleteSite() {
-            var webs = WebsiteService.deleteWebsite(vm.websiteId);
-            if (webs != null) {
-                // vm.message = "Website Successfully Deleted!"
-                $location.url("/user/" + vm.userId + "/website/");
-            } else {
-                vm.error = "Unable to delete website!";
-            }
+            WebsiteService.deleteWebsite(vm.websiteId)
+                .success(function (res) {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function (err) {
+                    vm.error = "Failed to delete!";
+                });
         }
     }
 })();

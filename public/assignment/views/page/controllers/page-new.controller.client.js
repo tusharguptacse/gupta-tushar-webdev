@@ -9,23 +9,23 @@
         function init() {
             vm.websiteId = $routeParams['wid'];
             vm.userId = $routeParams['uid'];
+
+            PageService.findPageByWebsiteId(vm.websiteId)
+                .success(function (pagesServer) {
+                    vm.pages = pagesServer;
+                });
         }
         init();
-        var pages = PageService.findPageByWebsiteId(vm.websiteId);
-        vm.pages = pages;
-        websiteId = vm.websiteId;
 
 
         function create(page) {
-                var newPage = PageService.createPage(vm.websiteId, page);
-
-                if(newPage) {
-                    $location.url("/user/"+vm.userId+"/website/"+websiteId+"/page/");
-
-                }
-                else {
-                    vm.error = "Page cannot be created!";
-                }
+                PageService.createPage(vm.websiteId, page)
+                    .success(function (newPageCreated) {
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/");
+                    })
+                    .error(function (err) {
+                        vm.error = "Failed!";
+                    });
         }
     }
 })();

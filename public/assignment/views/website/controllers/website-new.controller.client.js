@@ -8,24 +8,30 @@
         vm.create = create;
         function init() {
             vm.userId = $routeParams['uid'];
+            var promise = WebsiteService.findWebsitesByUser(vm.userId)
+
+            promise
+                .success(function (arrayWebsites) {
+                    vm.websites = arrayWebsites;
+                })
+                .error(function (err) {
+                    vm.error = "Can't create new website";
+                });
         }
 
         init();
-        var websites = WebsiteService.findWebsitesByUser(vm.userId);
-        vm.websites = websites;
-        userId = vm.userId;
 
 
         function create(website) {
-            var newWebsite = WebsiteService.createWebsite(vm.userId, website);
+            var newWebsitePromise = WebsiteService.createWebsite(vm.userId, website);
 
-            if (newWebsite) {
-                $location.url("/user/" + userId + "/website/");
-
-            }
-            else {
-                vm.error = "Website cannot be created!";
-            }
+            newWebsitePromise
+                .success(function (website) {
+                    $location.url("/user/" + vm.userId + "/website");
+                })
+                .error(function (err) {
+                    vm.error = "failed to create new website";
+                });
         }
     }
 })();

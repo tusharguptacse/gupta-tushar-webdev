@@ -12,20 +12,26 @@
 
         function init() {
             vm.userId = $routeParams['uid'];
-            var user = UserService.findUserById(vm.userId);
-            vm.user = user;
+            var promise = UserService.findUserById(vm.userId);
+            promise.success(function(user) {
+                vm.user = user;
+            });
+
             userId = vm.userId
 
         }
         init();
 
         function updateUser(newUser) {
-            var user = UserService.updateUser(vm.userId, newUser);
-            if(user != null) {
-                vm.message = "User Successfully Updated!"
-            } else {
-                vm.error = "Unable to update user";
-            }
+            UserService
+                .updateUser(vm.userId, newUser)
+                .success(function (user) {
+                if(user != null) {
+                    vm.message = "User Successfully Updated!"
+                } else {
+                    vm.error = "Unable to update user";
+                }
+            });
         }
 
         function deleteUsers() {
