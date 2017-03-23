@@ -7,9 +7,11 @@
         var vm = this;
 
         // event handlers
-        vm.login = login;
+
 
         function init() {
+            vm.login = login;
+            vm.error = null;
         }
 
         init();
@@ -21,7 +23,7 @@
                     .findUserByCredentials(user.username, user.password);
 
                 promise.success(function(user) {
-                    if (user) {
+                    if (user.length != 0) {
                         $location.url("/user/" + user._id);
                     }
                     else {

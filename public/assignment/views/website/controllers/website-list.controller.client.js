@@ -13,6 +13,7 @@
             promise
                 .success(function (arrayWebsites) {
                     vm.websites = arrayWebsites;
+
                 })
                 .error(function (err) {
                     vm.error = "Can't find websites :P"

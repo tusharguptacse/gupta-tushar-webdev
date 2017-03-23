@@ -51,7 +51,7 @@
         <li ng-repeat="website in model.websites" class="list-group-item">
             <div class="row">
                 <div class="col-xs-6">
-                    <a href="#/user/{{website.developerId}}/website/{{website._id}}/page" class="no-line-hover">
+                    <a href="#/user/{{website._user}}/website/{{website._id}}/page" class="no-line-hover">
                         {{website.name}}
                     </a>
                 </div>
@@ -59,10 +59,10 @@
                     {{website.update | date}}
                 </div>
                 <div class="col-xs-2 hidden-xs">
-                    {{website.developerId}}
+                    {{website._user}}
                 </div>
                 <div class="col-sm-1 col-xs-6">
-                    <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
+                    <a href="#/user/{{website._user}}/website/{{website._id}}" class="pull-right">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                 </div>

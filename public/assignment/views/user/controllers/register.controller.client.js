@@ -19,6 +19,7 @@
                 UserService
                     .findUserByUsername(user.username)
                     .success(function(user) {
+                        console.log(user);
                         vm.error = "That username is already taken";
                     })
                     .error(function(err){

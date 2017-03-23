@@ -26,6 +26,7 @@
             UserService
                 .updateUser(vm.userId, newUser)
                 .success(function (user) {
+                    console.log(user);
                 if(user != null) {
                     vm.message = "User Successfully Updated!"
                 } else {
